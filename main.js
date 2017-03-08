@@ -1,4 +1,4 @@
-// "use strict";
+"use strict";
 
 var size = Math.round(Math.random() * 100 + 1);
 var speed;
@@ -19,16 +19,19 @@ function createBubble() {
 
   var direction = Math.round(Math.random() * 20 - 10);
 
+  console.log("This bubble's size is " + size + " and it's speed is " + speed + ".");
+
   var moveInterval = setInterval(function(){
-    newTop = parseInt($bubble.style.top) - 10;
-    newLeft = parseInt($bubble.style.left) + direction;
+    var newTop = parseInt($bubble.style.top) - 10;
+    var newLeft = parseInt($bubble.style.left) + direction;
     $bubble.style.top = newTop + "px";
     $bubble.style.left = newLeft + "px";
 
-    if ( newTop < -100 ||
+    if (newTop < -100 ||
         newLeft < -100 ||
-        newLeft > window.innerWidth )
-        window.clearInterval(moveInterval);
+        newLeft > window.innerWidth ) {
+          window.clearInterval(moveInterval);
+    }
 
     // changeColor(); <-- commented the function out. You said via Slack that was
     // one of the 5 points credit :)
@@ -43,16 +46,15 @@ window.onload = function() {
     
     button.style.display = "none";
     showText();
-    for ( i = 0; i < 100; i++ ) {
+    for ( var i = 0; i < 100; i++ ) {
       createBubble();
-      console.log("This bubble's size is " + size + " and it's speed is " + speed + ".");
     }
   });
 }
 
 function showText() {
   var text = document.getElementsByTagName("p")[0];
-  studentName = "Shelly";
+  var studentName = "Shelly";
   text.innerHTML += ", " + studentName + "!";
   text.style.opacity = 1;
 }
